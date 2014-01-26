@@ -45,6 +45,11 @@ import java.util.List;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.swing.ImageIcon;
+import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.FileHeader;
+import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.util.Zip4jConstants;
 import org.apache.sanselan.Sanselan;
 import org.jvnet.staxex.StreamingDataHandler;
 import org.sola.common.messaging.ClientMessage;
@@ -775,5 +780,46 @@ public class FileUtility {
         fileName = sanitizeFileName(fileName, true);
         File file = new File(getCachePath() + File.separator + fileName);
         deleteFile(file);
+    }
+
+    public static String compress(String fileName, String password) {
+        fileName = sanitizeFileName(fileName, true);
+        String inputFilePath = getCachePath() + File.separator + fileName;
+        String zipFileName = getFileNameWithoutExtension(fileName) + ".zip";
+        String outputFilePath = getCachePath() + File.separator + zipFileName;
+        try {
+            ZipFile zipFile = new ZipFile(outputFilePath);
+            File inputFile = new File(inputFilePath);
+            ZipParameters parameters = new ZipParameters();
+            parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
+            parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_ULTRA);
+            parameters.setEncryptFiles(true);
+            parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_AES);
+            parameters.setAesKeyStrength(Zip4jConstants.AES_STRENGTH_256);
+            parameters.setPassword(password);
+            zipFile.addFile(inputFile, parameters);
+            return zipFileName;
+        } catch (ZipException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static String uncompress(String fileName, String password) {
+        fileName = sanitizeFileName(fileName, true);
+        //Full path of the file that is compressed
+        String inputFilePath = getCachePath() + File.separator + fileName;
+        String destinationPath = getCachePath();
+        try {
+            ZipFile zipFile = new ZipFile(inputFilePath);
+            if (zipFile.isEncrypted()) {
+                zipFile.setPassword(password);
+            }
+            FileHeader fileHeader = (FileHeader)zipFile.getFileHeaders().get(0);
+            String fileUncompressed = fileHeader.getFileName();
+            zipFile.extractAll(destinationPath);
+            return fileUncompressed;
+        } catch (ZipException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
