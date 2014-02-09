@@ -804,22 +804,18 @@ public class FileUtility {
         }
     }
 
-    public static String uncompress(String fileName, String password) {
+    public static String uncompress(String fileName, String password) throws ZipException {
         fileName = sanitizeFileName(fileName, true);
         //Full path of the file that is compressed
         String inputFilePath = getCachePath() + File.separator + fileName;
         String destinationPath = getCachePath();
-        try {
-            ZipFile zipFile = new ZipFile(inputFilePath);
-            if (zipFile.isEncrypted()) {
-                zipFile.setPassword(password);
-            }
-            FileHeader fileHeader = (FileHeader)zipFile.getFileHeaders().get(0);
-            String fileUncompressed = fileHeader.getFileName();
-            zipFile.extractAll(destinationPath);
-            return fileUncompressed;
-        } catch (ZipException ex) {
-            throw new RuntimeException(ex);
+        ZipFile zipFile = new ZipFile(inputFilePath);
+        if (zipFile.isEncrypted()) {
+            zipFile.setPassword(password);
         }
+        FileHeader fileHeader = (FileHeader) zipFile.getFileHeaders().get(0);
+        String fileUncompressed = fileHeader.getFileName();
+        zipFile.extractAll(destinationPath);
+        return fileUncompressed;
     }
 }
