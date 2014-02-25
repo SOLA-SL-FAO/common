@@ -64,6 +64,10 @@ import org.sola.common.messaging.ServiceMessage;
 public class FileUtility {
 
     public final static String csv = "csv";
+    // Ticket #397 - use !! to delimit the location of path separators as an
+    // alternative to the default ;. This is because SOLA uses ; as a special
+    // path separator character when dealing with NetworkFolder. 
+    public final static String alternatePathSeparator = "!!";
     private static long maxCacheSizeBytes = 200 * 1024 * 1024;
     private static long resizedCacheSizeBytes = 120 * 1024 * 1024;
     private static int minNumberCachedFiles = 10;
