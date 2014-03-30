@@ -96,5 +96,7 @@ public class RolesConstants {
     //CONSOLIDATION
     public static final String CONSOLIDATION_EXTRACT = "consolidationExt";
     public static final String CONSOLIDATION_CONSOLIDATE = "consolidationCons";
+    // COMMUNITY SERVER
+    public static final String CS_ACCESS_CS = "AccessCS";
     
 }
