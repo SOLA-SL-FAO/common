@@ -327,6 +327,19 @@ public class DateUtility {
     }
 
     /**
+     * Returns date in ISO 8601 format without seconds (e.g. 2010-10-12T08:50)
+     * @param date Date to format
+     * @return 
+     */
+    public static String getDateInISO8601(Date date){
+        if(date == null){
+            return null;
+        }
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        return df.format(date);
+    }
+    
+    /**
      * Returns date string representation in localized format.
      *
      * @param date Date to convert into string
