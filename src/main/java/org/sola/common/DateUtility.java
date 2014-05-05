@@ -326,7 +326,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns date in ISO 8601 format without seconds (e.g. 2010-10-12T08:50)
+     * Returns date in ISO 8601 format (e.g. 2010-10-12T08:50:00)
      *
      * @param date Date to format
      * @return
@@ -335,7 +335,7 @@ public class DateUtility {
         if (date == null) {
             return null;
         }
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         return df.format(date);
     }
 
