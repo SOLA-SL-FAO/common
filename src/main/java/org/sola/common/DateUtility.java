@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Scott Violet
@@ -141,8 +142,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the day after
-     * <code>date</code>.
+     * Returns the day after <code>date</code>.
      *
      * @param date Date used in calculating next day
      * @return Day after <code>date</code>.
@@ -152,9 +152,8 @@ public class DateUtility {
     }
 
     /**
-     * Adds
-     * <code>amount</code> days to
-     * <code>time</code> and returns the resulting time.
+     * Adds <code>amount</code> days to <code>time</code> and returns the
+     * resulting time.
      *
      * @param time Base time
      * @param amount Amount of increment.
@@ -328,17 +327,18 @@ public class DateUtility {
 
     /**
      * Returns date in ISO 8601 format without seconds (e.g. 2010-10-12T08:50)
+     *
      * @param date Date to format
-     * @return 
+     * @return
      */
-    public static String getDateInISO8601(Date date){
-        if(date == null){
+    public static String getDateInISO8601(Date date) {
+        if (date == null) {
             return null;
         }
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         return df.format(date);
     }
-    
+
     /**
      * Returns date string representation in localized format.
      *
@@ -352,6 +352,15 @@ public class DateUtility {
         }
         DateFormat f = DateFormat.getDateInstance(dateStyle);
         return f.format(date);
+    }
+
+    /**
+     * Returns short date format pattern 
+     * @return 
+     */
+    public static String getShortDateFormatPattern() {
+        DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+        return ((SimpleDateFormat) formatter).toPattern();
     }
 
     /**
@@ -372,8 +381,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the day after
-     * <code>date</code>.
+     * Returns the day after <code>date</code>.
      *
      * @param date Date used in calculating next day
      * @return Day after <code>date</code>.
@@ -383,8 +391,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the week after
-     * <code>date</code>.
+     * Returns the week after <code>date</code>.
      *
      * @param date Date used in calculating next week
      * @return week after <code>date</code>.
@@ -394,8 +401,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the number of days difference between
-     * <code>t1</code> and
+     * Returns the number of days difference between <code>t1</code> and
      * <code>t2</code>.
      *
      * @param t1 Time 1
@@ -425,8 +431,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the number of days difference between
-     * <code>t1</code> and
+     * Returns the number of days difference between <code>t1</code> and
      * <code>t2</code>.
      *
      * @param t1 Time 1
@@ -482,8 +487,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the day before
-     * <code>date</code>.
+     * Returns the day before <code>date</code>.
      *
      * @param date Date used in calculating previous day
      * @return Day before <code>date</code>.
@@ -493,8 +497,7 @@ public class DateUtility {
     }
 
     /**
-     * Returns the week before
-     * <code>date</code>.
+     * Returns the week before <code>date</code>.
      *
      * @param date Date used in calculating previous week
      * @return week before <code>date</code>.
@@ -504,11 +507,9 @@ public class DateUtility {
     }
 
     /**
-     * Returns the first day before
-     * <code>date</code> that has the day of week matching
-     * <code>startOfWeek</code>. For example, if you want to find the previous
-     * monday relative to
-     * <code>date</code> you would call
+     * Returns the first day before <code>date</code> that has the day of week
+     * matching <code>startOfWeek</code>. For example, if you want to find the
+     * previous monday relative to <code>date</code> you would call
      * <code>getPreviousDay(date, Calendar.MONDAY)</code>.
      *
      * @param date Base date
@@ -522,11 +523,9 @@ public class DateUtility {
     }
 
     /**
-     * Returns the first day after
-     * <code>date</code> that has the day of week matching
-     * <code>startOfWeek</code>. For example, if you want to find the next
-     * monday relative to
-     * <code>date</code> you would call
+     * Returns the first day after <code>date</code> that has the day of week
+     * matching <code>startOfWeek</code>. For example, if you want to find the
+     * next monday relative to <code>date</code> you would call
      * <code>getPreviousDay(date, Calendar.MONDAY)</code>.
      *
      * @param date Base date
