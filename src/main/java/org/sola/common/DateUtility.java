@@ -21,9 +21,11 @@
 package org.sola.common;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -355,8 +357,9 @@ public class DateUtility {
     }
 
     /**
-     * Returns short date format pattern 
-     * @return 
+     * Returns short date format pattern
+     *
+     * @return
      */
     public static String getShortDateFormatPattern() {
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
@@ -635,5 +638,88 @@ public class DateUtility {
             calendar.setTimeInMillis(date);
             return (calendar.get(Calendar.DAY_OF_WEEK));
         }
+    }
+
+    /**
+     * Maximizes provided date by increasing time to 23:59:59. It's useful for
+     * search criteria, where range of dates (from-to) required. If null values
+     * is provided, then 01.01.2500 23:59 will be set.
+     *
+     * @param date Date object to maximize
+     * @return
+     */
+    public static Date maximizeDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+
+        if (date == null) {
+            date = new GregorianCalendar(2500, 1, 1, 23, 59).getTime();
+        } else {
+            cal.setTime(date);
+            cal.set(Calendar.HOUR_OF_DAY, 23);
+            cal.set(Calendar.MINUTE, 59);
+            date = cal.getTime();
+        }
+
+        return date;
+    }
+
+    /**
+     * Minimizes provided date by decreasing time to 00:00:00. It's useful for
+     * search criteria, where range of dates (from-to) required. If null values
+     * is provided, then 01.01.01 00:00 will be set.
+     *
+     * @param date Date object to minimize
+     * @return
+     */
+    public static Date minimizeDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+
+        if (date == null) {
+            date = new GregorianCalendar(1, 1, 1, 0, 0).getTime();
+        } else {
+            cal.setTime(date);
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            date = cal.getTime();
+        }
+
+        return date;
+    }
+
+    /**
+     * Converts provided string into date with a given date format. If string
+     * can't be converted, null values will be returned.
+     *
+     * @param dateString Date in string format
+     * @param dateFormat Date format to use for converting
+     * @return
+     */
+    public static Date convertToDate(String dateString, String dateFormat) {
+        if (StringUtility.isEmpty(dateString) || StringUtility.isEmpty(dateFormat)) {
+            return null;
+        }
+
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+            return formatter.parse(dateString);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+    
+    /**
+     * Formats provided date using date format string.
+     *
+     * @param date Date to format
+     * @param dateFormat Date format to use for converting
+     * @return
+     */
+    public static String formatDate(Date date, String dateFormat) {
+        if (date == null || StringUtility.isEmpty(dateFormat)) {
+            return null;
+        }
+
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        return formatter.format(date);
     }
 }

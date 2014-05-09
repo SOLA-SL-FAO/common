@@ -820,4 +820,33 @@ public class FileUtility {
         zipFile.extractAll(destinationPath);
         return fileUncompressed;
     }
+    
+    /** 
+     * Formats file size, applying KB, MB, GB units.
+     * @param size Size to format
+     * @return 
+     */
+    public static String formatFileSize(long size){
+        if(size == 0){
+            return "0";
+        }
+        
+        if(size < 1024){
+            return size + "B";
+        }
+        
+        if(size >= 1024 && size < 1048576){
+            return Math.round((size/1024)*100.0)/100.0 + "KB";
+        }
+        
+        if(size >= 1048576 && size < 1073741824){
+            return Math.round((size/1024/1024)*100.0)/100.0 + "MB";
+        }
+        
+        if(size >= 1073741824 && size < 1099511627776L){
+            return Math.round((size/1024/1024/1024)*100.0)/100.0 + "GB";
+        }
+        
+        return Math.round((size/1024/1024/1024/1024)*100.0)/100.0 + "TB";
+    }
 }
