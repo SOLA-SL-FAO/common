@@ -206,6 +206,23 @@ public class DateUtility {
     }
 
     /**
+     * Adds the specified part of  date or time to the provided date instance.
+     *
+     * @param baseDate The date to add the specified part of the date.
+     * @param amount Amount to add.
+     * @param datePart Part of the date to add. See {@link Calendar}
+     * @return the new date
+     */
+    public static Date addTime(Date baseDate, int amount, int datePart) {
+        Calendar cal = Calendar.getInstance();
+        synchronized (cal) {
+            cal.setTime(baseDate);
+            cal.add(datePart, amount);
+        }
+        return cal.getTime();
+    }
+    
+    /**
      * Returns the maximum value of 2 dates.
      *
      * @param date1
