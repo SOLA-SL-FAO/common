@@ -29,12 +29,9 @@
  */
 package org.sola.common;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Contains helping string methods
@@ -47,7 +44,7 @@ public class StringUtility {
      * @param value String value to check
      */
     public static boolean isEmpty(String value) {
-        return value == null || value.isEmpty();
+        return value == null || value.trim().isEmpty();
     }
 
     /**
