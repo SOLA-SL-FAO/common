@@ -102,5 +102,14 @@ public class RolesConstants {
     public static final String CONSOLIDATION_CONSOLIDATE = "consolidationCons";
     // COMMUNITY SERVER
     public static final String CS_ACCESS_CS = "AccessCS";
+    // DATA SECURITY CLASSIFICATION
+    public static final String CLASSIFICATION_CHANGE_CLASS = "ChangeSecClass";
+    public static final String CLASSIFICATION_UNRESTRICTED = "01SEC_Unrestricted";
+    public static final String CLASSIFICATION_RESTRICTED = "02SEC_Restricted";
+    public static final String CLASSIFICATION_CONFIDENTIAL = "03SEC_Confidential";
+    public static final String CLASSIFICATION_SECRET = "04SEC_Secret";
+    public static final String CLASSIFICATION_TOPSECRET = "05SEC_TopSecret";
+    public static final String CLASSIFICATION_SUPPRESSION_ORDER = "10SEC_SuppressOrd";
+    
 
 }
