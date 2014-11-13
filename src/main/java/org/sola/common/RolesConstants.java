@@ -113,5 +113,8 @@ public class RolesConstants {
     // SERVICES
      public static final String SERVICE_START_CHECKLIST = "checklist";
      public static final String SERVICE_START_PUBLIC_DISPLAY = "publicDisplay";
-
+     public static final String SERVICE_START_OBJECTIONS = "slObjection";
+     public static final String SERVICE_START_NOTIFY = "slNotify";
+     // WORKFLOW
+     public static final String WORKFLOW_EDIT_OBJECTION_COMMENT = "ObjectionCommentEdit";
 }
