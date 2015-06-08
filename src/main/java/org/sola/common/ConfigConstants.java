@@ -221,6 +221,10 @@ public class ConfigConstants {
      */
     public static final String EMAIL_ADMIN_NAME = "email-admin-name";
     /**
+     * JNDI name of the mailer service, configured on GlassFish
+     */
+    public static final String EMAIL_MAILER_JNDI_NAME = "email-mailer-jndi-name";
+    /**
      * Enables or disables email service. 1 - enable, 0 - disable.
      */
     public static final String EMAIL_ENABLE_SERVICE = "email-enable-email-service";
@@ -228,6 +232,19 @@ public class ConfigConstants {
      * Message body format. text - for simple text format, html - for html format
      */
     public static final String EMAIL_BODY_FORMAT = "email-body-format";
+    
+    
+    
+    /**
+     * New claim challenge body text.
+     */
+    public static final String EMAIL_MSG_REC_NOTIFIABLE_BODY = "email-msg-notifiable-submit-body";
+     /**
+     * Subject text for new user registration on OpenTenure Web-site. Sent to
+     * user.
+     */
+    public static final String EMAIL_MSG_NOTIFIABLE_SUBJECT = "email-msg-notifiable-subject";
+  
     /**
      * New claim challenge body text.
      */
@@ -253,6 +270,26 @@ public class ConfigConstants {
      */
     public static final String EMAIL_MSG_CLAIM_SUBMITTED_SUBJECT = "email-msg-claim-submit-subject";
     /**
+     * Body text for claim withdrawal action
+     */
+    public static final String EMAIL_MSG_CLAIM_WITHDRAW_BODY = "email-msg-claim-withdraw-body";
+    /**
+     * Subject text for claim withdrawal action
+     */
+    public static final String EMAIL_MSG_CLAIM_WITHDRAW_SUBJECT = "email-msg-claim-withdraw-subject";
+    /** Body text for claim reject action */
+    public static final String EMAIL_MSG_CLAIM_REJECT_BODY = "email-msg-claim-reject-body";
+    /** Subject text for claim reject action */
+    public static final String EMAIL_MSG_CLAIM_REJECT_SUBJECT = "email-msg-claim-reject-subject";
+    /** Body text for claim review approve action */
+    public static final String EMAIL_MSG_CLAIM_REVIEW_APPROVE_BODY = "email-msg-claim-approve-review-body";
+    /** Subject text for claim review approve action */
+    public static final String EMAIL_MSG_CLAIM_REVIEW_APPROVE_SUBJECT = "email-msg-claim-approve-review-subject";
+    /** Body text for claim moderation approve action */
+    public static final String EMAIL_MSG_CLAIM_MODERATION_APPROVE_BODY = "email-msg-claim-approve-moderation-body";
+    /** Subject text for claim moderation approve action */
+    public static final String EMAIL_MSG_CLAIM_MODERATION_APPROVE_SUBJECT = "email-msg-claim-approve-moderation-subject";
+    /**
      * Claim update body text.
      */
     public static final String EMAIL_MSG_CLAIM_UPDATED_BODY = "email-msg-claim-updated-body";
@@ -260,6 +297,22 @@ public class ConfigConstants {
      * Claim update subject text.
      */
     public static final String EMAIL_MSG_CLAIM_UPDATED_SUBJECT = "email-msg-claim-updated-subject";
+    /** Body text for claim challenge review action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_REVIEW_BODY = "email-msg-claim-challenge-approve-review-body";
+    /** Subject text for claim challenge review action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_REVIEW_SUBJECT = "email-msg-claim-challenge-approve-review-subject";
+    /** Body text for claim challenge moderation action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_MODERATION_BODY = "email-msg-claim-challenge-approve-moderation-body";
+    /** Subject text for claim challenge moderation action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_MODERATION_SUBJECT = "email-msg-claim-challenge-approve-moderation-subj";
+    /** Body text for claim challenge rejection action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_REJECTION_BODY = "email-msg-claim-challenge-reject-body";
+    /** Subject text for claim challenge rejection action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_REJECTION_SUBJECT = "email-msg-claim-challenge-reject-subject";
+    /** Body text for claim challenge withdrawal action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_WITHDRAWAL_BODY = "email-msg-claim-challenge-withdraw-body";
+    /** Subject text for claim challenge withdrawal action. */
+    public static final String EMAIL_MSG_CLAIM_CHALLENGE_WITHDRAWAL_SUBJECT = "email-msg-claim-challenge-withdraw-subject";
     /**
      * Message text for delivery failure.
      */
@@ -297,6 +350,16 @@ public class ConfigConstants {
      */
     public static final String EMAIL_MSG_USER_REG_SUBJECT = "email-msg-user-registration-subject";
     /**
+     * Message text for new user registration on OpenTenure Web-site. Sent to
+     * user.
+     */
+    public static final String EMAIL_MSG_ACTIVATION_BODY = "email-msg-user-activation-body";
+    /**
+     * Subject text for new user registration on OpenTenure Web-site. Sent to
+     * user.
+     */
+    public static final String EMAIL_MSG_ACTIVATION_SUBJECT = "email-msg-user-activation-subject";
+    /**
      * Number of attempts to send email with first interval timeout
      */
     public static final String EMAIL_SEND_ATTEMPTS1 = "email-send-attempts1";
@@ -324,4 +387,25 @@ public class ConfigConstants {
      * Time interval in seconds for email service to check and process scheduled messages.
      */
     public static final String EMAIL_SERVICE_INTERVAL = "email-service-interval";
+    
+    /** Open Tenure community area where parcels can be claimed */
+    public static final String OT_COMMUNITY_AREA = "ot-community-area";
+    
+    /** Full path to PostgreSQL utilities (bin) folder (e.g. C:\Program Files\PostgreSQL\9.1\bin). Used for backup/restore implementation of SOLA Web admin application */
+    public static final String DB_UTILITIES_FOLDER = "db-utilities-folder";
+    
+    /** SOLA product name */
+    public static final String PRODUCT_NAME = "product-name";
+    
+    /** SOLA product code */
+    public static final String PRODUCT_CODE = "product-code";
+    
+    /** SOLA Registry */
+    public static final String SOLA_REGISTRY = "sr";
+    /** SOLA Systematic Registration */
+    public static final String SOLA_SYSTEMATIC_REGISTRATION = "ssr";
+    /** SOLA State Land */
+    public static final String SOLA_STATE_LAND = "ssl";
+    /** SOLA Community Server */
+    public static final String SOLA_COMMUNITY_SERVER = "scs";
 }

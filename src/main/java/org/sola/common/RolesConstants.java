@@ -58,6 +58,7 @@ public class RolesConstants {
     public static final String APPLICATION_VALIDATE = "ApplnValidate";
     public static final String APPLICATION_DISPATCH = "ApplnDispatch";
     public static final String APPLICATION_ARCHIVE = "ApplnArchive";
+    public static final String APPLICATION_TRANSFER = "ApplnTransfer";
     // ADMINISTRATIVE
     public static final String ADMINISTRATIVE_BA_UNIT_SAVE = "BaunitSave";
     public static final String ADMINISTRATIVE_RRR_SAVE = "BaunitrrrSave";
@@ -79,6 +80,8 @@ public class RolesConstants {
     public static final String GIS_PRINT = "PrintMap";
     public static final String GIS_EXPORT_MAP = "ExportMap";
     public static final String GIS_MEASURE_MAP = "MeasureMap";
+    public static final String GIS_FEATURE_EDITOR = "MapFeatureEditor";
+    public static final String GIS_ZONE_EDITOR = "MapZoneEditor";
     // CADASTRE
     public static final String CADASTRE_PARCEL_SAVE = "ParcelSave";
     // PARTY
@@ -87,6 +90,7 @@ public class RolesConstants {
     public static final String PARTY_RIGHTHOLDERS_SAVE = "RHSave";
     // REPORTS
     public static final String REPORTS_VIEW = "ReportGenerate";
+    public static final String REPORTS_GENDER = "ReportGender";
     // ADMIN
     public static final String ADMIN_MANAGE_SECURITY = "ManageSecurity";
     public static final String ADMIN_MANAGE_REFDATA = "ManageRefdata";
@@ -100,7 +104,10 @@ public class RolesConstants {
     public static final String CONSOLIDATION_CONSOLIDATE = "consolidationCons";
     // COMMUNITY SERVER
     public static final String CS_ACCESS_CS = "AccessCS";
-    // DATA SECURITY CLASSIFICATION
+    public static final String CS_MODERATE_CLAIM = "ModerateClaim";
+    public static final String CS_REVIEW_CLAIM = "ReviewClaim";
+    public static final String CS_RECORD_CLAIM = "RecordClaim";
+     // DATA SECURITY CLASSIFICATION
     public static final String CLASSIFICATION_CHANGE_CLASS = "ChangeSecClass";
     public static final String CLASSIFICATION_UNRESTRICTED = "01SEC_Unrestricted";
     public static final String CLASSIFICATION_RESTRICTED = "02SEC_Restricted";

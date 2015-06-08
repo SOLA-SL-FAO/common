@@ -43,6 +43,7 @@ import java.util.List;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.swing.ImageIcon;
+import org.apache.commons.io.FileUtils;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;
@@ -73,6 +74,7 @@ public class FileUtility {
     private static int minNumberCachedFiles = 10;
     private static long maxFileSizeBytes = 100 * 1024 * 1024;
     private static String cachePath = System.getProperty("user.home") + "/sola/cache/documents/";
+    private static final int BUFF_SIZE = 4096;
 
     /**
      * Checks the cache to ensure it won't exceed the max size cache size. If
@@ -782,6 +784,46 @@ public class FileUtility {
         fileName = sanitizeFileName(fileName, true);
         File file = new File(getCachePath() + File.separator + fileName);
         deleteFile(file);
+    }
+
+    public static String createFileFromContent(String fileName, String content)
+            throws IOException {
+        String filePath = getCachePath() + File.separator + sanitizeFileName(fileName, false);
+        FileUtils.writeStringToFile(new File(filePath), content);
+        return filePath;
+    }
+
+    /**
+     * Deletes directory with all sub folders and files.
+     *
+     * @param file Directory to delete
+     * @throws java.io.IOException
+     */
+    public static void deleteDirectory(File file) throws IOException {
+        if (file.isDirectory()) {
+            //directory is empty, delete it
+            if (file.list().length == 0) {
+                file.delete();
+            } else {
+                // loop through the files
+                String files[] = file.list();
+
+                for (String temp : files) {
+                    File fileDelete = new File(file, temp);
+                    //recursive delete
+                    deleteDirectory(fileDelete);
+                }
+
+                //check the directory again, if empty then delete it
+                if (file.list().length == 0) {
+                    file.delete();
+                }
+            }
+
+        } else {
+            //if file, then delete it
+            file.delete();
+        }
     }
 
     public static String compress(String fileName, String password) {
